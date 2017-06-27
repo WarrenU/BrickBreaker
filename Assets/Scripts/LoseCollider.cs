@@ -11,7 +11,7 @@ public class LoseCollider : MonoBehaviour {
     	level_manager.load_level("Lose");
     }
 
-    void OnCollisionEnter2D(Collider2D collision){
+	void OnCollisionEnter2D(Collision2D collision){
     	print("col");
     }
 }
