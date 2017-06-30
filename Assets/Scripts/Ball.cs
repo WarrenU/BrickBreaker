@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 	private Paddle paddle;
-	private bool ball_launched;
-	private Vector3 paddle_to_ball_vect;
+	private bool ballLaunched;
+	private Vector3 paddleToBallVector;
 
-	private void launch_ball(){
+	private void launchBall(){
 		this.GetComponent<Rigidbody2D>().velocity = new Vector2 (2f, 10f);
-		ball_launched = true;
+		ballLaunched = true;
 	}
 
-	private void stick_ball_to_paddle(){
+	private void stickBallToPaddle(){
 		// Keeps ball relative to the paddle by vector.
-		this.transform.position = paddle.transform.position + paddle_to_ball_vect;
+		this.transform.position = paddle.transform.position + paddleToBallVector;
 	}
 
 	// Use this for initialization
 	void Start () {
 		paddle = GameObject.FindObjectOfType<Paddle>();
-		paddle_to_ball_vect = this.transform.position - paddle.transform.position;
+		paddleToBallVector = this.transform.position - paddle.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(!ball_launched){
-			stick_ball_to_paddle();
+		if(!ballLaunched){
+			stickBallToPaddle();
 			if (Input.GetMouseButton(0)){
-				launch_ball(); //ball_launched is true
+				launchBall(); //ball_launched is true
 			}
 		}
 	}
